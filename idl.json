@@ -1,0 +1,80 @@
+{
+  "version": "1.0.0",
+  "name": "fenerbahce_championship_tracker",
+  "instructions": [
+    {
+      "name": "initializeTracker",
+      "accounts": [
+        {
+          "name": "tracker",
+          "isMut": true,
+          "isSigner": false,
+          "desc": "Fenerbahçe tracker PDA account"
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true,
+          "desc": "Account paying for initialization"
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "desc": "System program"
+        }
+      ],
+      "args": [],
+      "discriminant": {
+        "type": "u8",
+        "value": 0
+      }
+    },
+    {
+      "name": "playSeason",
+      "accounts": [
+        {
+          "name": "tracker",
+          "isMut": true,
+          "isSigner": false,
+          "desc": "Fenerbahçe tracker PDA account"
+        }
+      ],
+      "args": [],
+      "discriminant": {
+        "type": "u8",
+        "value": 1
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "name": "FenerbahceTracker",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "totalTrophies",
+            "type": "u64"
+          },
+          {
+            "name": "currentSeason",
+            "type": "u16"
+          },
+          {
+            "name": "seasonsPlayed",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [],
+  "errors": [],
+  "metadata": {
+    "name": "Fenerbahçe Championship Tracker",
+    "description": "Educational Solana program for learning blockchain development",
+    "repository": "https://github.com/alperimo/solana-championship-tracker",
+    "address": "FWTvPqvnxNMserrz39P33H1LfnfokHqkrM7k2TfoYn7d"
+  }
+}

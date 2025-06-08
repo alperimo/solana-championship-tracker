@@ -54,6 +54,19 @@ examples/
 └── client_playseason.rs # Play through seasons interactively
 ```
 
+## Program Information
+
+- **Program Name**: Fenerbahçe Championship Tracker
+- **Network**: Devnet/Localnet
+- **Version**: 1.0.0
+
+### Instructions
+
+| Instruction | Discriminator | Description |
+|-------------|--------------|-------------|
+| `InitializeTracker` | 0 | Initialize Fenerbahçe tracker with 17 initial trophies |
+| `PlaySeason` | 1 | Simulate a season and update trophy count |
+
 ## Building the Program
 
 ```bash

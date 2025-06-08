@@ -15,6 +15,10 @@ use crate::{
     state::{FenerbahceTracker, SeasonData}
 };
 
+// Program metadata
+pub const PROGRAM_NAME: &str = "Fenerbahçe Championship Tracker";
+pub const PROGRAM_VERSION: &str = "1.0.0";
+
 pub struct Processor;
 
 impl Processor {
@@ -23,11 +27,14 @@ impl Processor {
         accounts: &[AccountInfo],
         instruction: FenerbahceInstruction,
     ) -> ProgramResult {
+        msg!("🟡🔵 Fenerbahçe Championship Tracker - Processing instruction");
         match instruction {
             FenerbahceInstruction::InitializeTracker => {
+                msg!("🚀 Instruction: Initialize Fenerbahçe Tracker");
                 Self::process_initialize_tracker(program_id, accounts)
             }
             FenerbahceInstruction::PlaySeason => {
+                msg!("⚽ Instruction: Play Season");
                 Self::process_play_season(program_id, accounts)
             }
         }
@@ -38,11 +45,16 @@ impl Processor {
         program_id: &Pubkey,
         accounts: &[AccountInfo],
     ) -> ProgramResult {
+        msg!("📍 Starting Fenerbahçe tracker initialization");
+        
         let accounts_iter = &mut accounts.iter();
 
         let tracker_account = next_account_info(accounts_iter)?;
         let payer_account = next_account_info(accounts_iter)?;
         let system_program = next_account_info(accounts_iter)?;
+
+        msg!("🔍 Tracker PDA: {}", tracker_account.key);
+        msg!("💰 Payer: {}", payer_account.key);
 
         // Verify that the tracker account is the correct PDA
         let (expected_tracker_pda, tracker_bump) = find_tracker_pda(program_id);
@@ -99,13 +111,17 @@ impl Processor {
 
     /// Play a season and update trophy count if Fenerbahçe won
     fn process_play_season(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
+        msg!("⚽ Starting season simulation");
+        
         let accounts_iter = &mut accounts.iter();
         let tracker_account = next_account_info(accounts_iter)?;
+
+        msg!("🔍 Tracker PDA: {}", tracker_account.key);
 
         // Verify that the tracker account is the correct PDA
         let (expected_tracker_pda, _) = find_tracker_pda(program_id);
         if tracker_account.key != &expected_tracker_pda {
-            msg!("Invalid tracker account: expected PDA");
+            msg!("❌ Invalid tracker account: expected PDA");
             return Err(ProgramError::InvalidAccountData);
         }
 

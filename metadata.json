@@ -1,0 +1,25 @@
+{
+  "name": "Fenerbahçe Championship Tracker",
+  "description": "Educational Solana program that teaches blockchain development through a Fenerbahçe Football Club championship tracker",
+  "image": "https://raw.githubusercontent.com/alperimo/solana-championship-tracker/main/assets/fenerbahce-logo.png",
+  "version": "1.0.0",
+  "website": "https://github.com/alperimo/solana-championship-tracker",
+  "instructions": [
+    {
+      "name": "InitializeTracker",
+      "discriminator": 0,
+      "description": "Initializes the Fenerbahçe championship tracker with 17 initial trophies"
+    },
+    {
+      "name": "PlaySeason", 
+      "discriminator": 1,
+      "description": "Simulates a season and updates trophy count if championship was won"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "FenerbahceTracker",
+      "description": "Global tracker storing championship data"
+    }
+  ]
+}
