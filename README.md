@@ -2,6 +2,9 @@
 
 An educational Solana program that teaches core blockchain development concepts through an engaging Fenerbahçe Football Club championship tracker. This hands-on tutorial demonstrates Solana's key features including Program Derived Addresses (PDAs), account management, instruction processing, and client interaction - all while following Fenerbahçe's exciting journey from 2010-2025.
 
+![log-screenshot1](https://github.com/user-attachments/assets/41314f29-afc1-465c-8f02-72c0ef699da3)
+![log-screenshot2](https://github.com/user-attachments/assets/bb285a67-04a1-4208-8823-b29aa9a7ea2a)
+
 ## Solana Blockchain Integration
 
 This program leverages Solana's unique features to create a decentralized championship tracking experience:
