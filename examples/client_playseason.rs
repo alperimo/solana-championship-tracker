@@ -12,6 +12,8 @@ use solana_sdk::{
      signature::{Keypair, Signer},
      transaction::Transaction,
 };
+use std::thread;
+use std::time::Duration;
 use std::str::FromStr;
 use borsh::BorshDeserialize;
 
@@ -25,7 +27,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     
     // Generate keypairs
-    let program_id: Pubkey = Pubkey::from_str("C5j3ikzXVjiRGEdg47dyGu8trNMaMxXYagGp2mSGTR4m").unwrap();
+    let program_id: Pubkey = Pubkey::from_str("FWTvPqvnxNMserrz39P33H1LfnfokHqkrM7k2TfoYn7d").unwrap();
     let payer = Keypair::new();
     let tracker_pubkey = get_tracker_address(&program_id);
     
@@ -39,6 +41,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     rpc_client.confirm_transaction(&airdrop_signature)
         .expect("Failed to confirm airdrop");
     println!("✅ Airdrop confirmed");
+
+    // Wait a bit to ensure the account is funded
+    thread::sleep(Duration::from_secs(2));
+
+    // Check balance
+    let balance = rpc_client.get_balance(&payer.pubkey())
+        .expect("Failed to get balance");
+    println!("Payer balance: {} lamports ({} SOL)", balance, balance as f64 / 1_000_000_000.0);
     
     // Check if tracker exists
     let account = match rpc_client.get_account(&tracker_pubkey) {

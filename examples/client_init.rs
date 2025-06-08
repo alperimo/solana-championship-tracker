@@ -27,7 +27,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     
     // Generate keypairs
-    let program_id: Pubkey = Pubkey::from_str("C5j3ikzXVjiRGEdg47dyGu8trNMaMxXYagGp2mSGTR4m").unwrap();
+    let program_id: Pubkey = Pubkey::from_str("FWTvPqvnxNMserrz39P33H1LfnfokHqkrM7k2TfoYn7d").unwrap();
     let payer = Keypair::new();
     let tracker_pubkey = get_tracker_address(&program_id);
     
@@ -100,7 +100,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("   🗓️  Starting season: {}", tracker_data.get_season_string());
     println!("   🏆 Initial trophies: {}", tracker_data.total_trophies);
     println!("   📊 Seasons to play: 2010-2011 to 2024-2025 (15 seasons)");
-    println!("   🎯 Expected championships: 2 (2010-2011 and 2013-2014)");
+    println!("   🎯 Run client_playseason to find out the champions!");
     println!("   📍 Tracker PDA address: {}", tracker_pubkey);
     println!("\n   Run client_playseason.rs to start playing seasons!");
     
